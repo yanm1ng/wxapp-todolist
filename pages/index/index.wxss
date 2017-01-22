@@ -1,0 +1,43 @@
+.userinfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.userinfo-avatar {
+  width: 72rpx;
+  height: 72rpx;
+  margin-left: 40rpx;
+  border-radius: 50%;
+}
+
+.section {
+  font-size: 30rpx;
+}
+
+.btn {
+  margin-top: 20rpx;
+  margin-right: 40rpx;
+}
+
+.todos {
+  margin: 20rpx 40rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 10rpx;
+  box-shadow: 0 0 5rpx #e0e0e0;
+}
+
+.todo-checked {
+  text-decoration:line-through;
+  color: #888;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 10rpx 40rpx;
+  font-size: 26rpx;
+  color: #777;
+}
+

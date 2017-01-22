@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+		<view class="section">
+			<input placeholder="今天想做啥？" value="{{input}}" bindinput="handleInput"/>
+		</view>
+		<view class="btn">
+			<button bindtap="todoAdd" class="weui-btn mini-btn" type="primary" size="mini">添加任务</button>
+		</view>
+  </view>
+</view>
+
+<view class="todos">
+  <view class="weui-cells__title">TodoList</view>
+	<view class="weui-cells weui-cells_after-title">
+		<block wx:if="{{todos.length}}">
+			<checkbox-group bindchange="todoChange">
+				<label class="weui-cell weui-check__label" wx:for="{{todos}}" wx:key="{{item.index}}">
+					<checkbox class="weui-check" value="{{item.index}}" checked="{{item.completed}}"/>
+					<view class="weui-cell__hd weui-check__hd_in-checkbox">
+						<icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.completed}}"></icon>
+						<icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.completed}}"></icon>
+					</view>
+					<view class="weui-cell__bd" wx:if="{{!item.completed}}">{{item.value}}</view>
+					<view class="weui-cell__bd todo-checked" wx:if="{{item.completed}}">{{item.value}}</view>
+				</label>
+			</checkbox-group>
+		</block>
+		
+		<block wx:else>
+			<view class="weui-cell">
+				<view class="weui-cell__bd">All the todos have been done!</view>
+			</view>
+		</block>
+	</view>
+</view>
+
+<view class="footer">
+  <text bindtap="handleAll">{{allCompleted ? 'Completed All' : 'UnCompleted All'}}</text>
+  <text bindtap="clearCompleted">Clear Completed</text>
+</view>
