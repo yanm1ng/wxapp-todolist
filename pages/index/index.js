@@ -103,15 +103,14 @@ Page({
   clearCompleted: function() {
     var that = this;
 
-     var {
+    var {
       todos,
     } = that.data;
-
     var remain = todos.filter(function(todo) {
       return todo.completed === false;
     });
 
-    if (!remain.length === todo.length) {
+    if (remain.length < todos.length) {
       wx.showModal({
         title: '提示',
         content: '清空已完成的Todos？',
