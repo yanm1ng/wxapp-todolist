@@ -15,18 +15,16 @@ Page({
   },
 
   onLoad: function () {
-    var that = this
+    var that = this;
     var todos = wx.getStorageSync('todo_list');
-    if(todos) {
-      that.setData({
-        todos
+    if (todos) {
+      app.getUserInfo(function(userInfo) {
+        that.setData({
+          userInfo,
+          todos
+        })
       })
     }
-    app.getUserInfo(function(userInfo){
-      that.setData({
-        userInfo
-      })
-    })
   },
 
   handleInput: function(e) {
@@ -41,7 +39,7 @@ Page({
       input
     } = this.data;
     var length = todos.length;
-    if(!input || !input.trim()){
+    if (!input || !input.trim()) {
       return 0;
     }
     var date = new Date();
@@ -65,16 +63,16 @@ Page({
         todos[i].completed = false;
 
         for (var j = 0; j < values.length; j++) {
-            if(todos[i].index == values[j]){
+            if (todos[i].index == values[j]) {
                 todos[i].completed = true;
                 break;
             }
         }
     }
     var allCompleted = this.data.allCompleted;
-    if(todos.length === values.length) {
+    if (todos.length === values.length) {
       allCompleted = false;
-    } else if(values.length === 0) {
+    } else if (values.length === 0) {
       allCompleted = true;
     } else {
       //do nothing
@@ -103,16 +101,30 @@ Page({
   },
 
   clearCompleted: function() {
-    var {
+    var that = this;
+
+     var {
       todos,
-    } = this.data;
-    var remain = todos.filter(function(todo){
+    } = that.data;
+
+    var remain = todos.filter(function(todo) {
       return todo.completed === false;
     });
 
-    this.setData({
-      todos: remain
-    })
-    this.save();
+    if (!remain.length === todo.length) {
+      wx.showModal({
+        title: '提示',
+        content: '清空已完成的Todos？',
+        success: function(res) {
+          if (res.confirm) {
+
+            that.setData({
+              todos: remain
+            })
+            that.save();
+          }
+        }
+      });
+    }
   }
 })
