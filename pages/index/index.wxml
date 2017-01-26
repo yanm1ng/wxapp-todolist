@@ -5,7 +5,7 @@
 			<input placeholder="今天想做啥？" value="{{input}}" bindinput="handleInput"/>
 		</view>
 		<view class="btn">
-			<button bindtap="todoAdd" class="weui-btn mini-btn" type="primary" size="mini">添加任务</button>
+			<button bindtap="todoAdd" class="weui-btn mini-btn" type="primary" size="mini">添加Todo</button>
 		</view>
   </view>
 </view>

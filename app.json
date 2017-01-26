@@ -1,11 +1,27 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+    "pages/index/index",
+    "pages/log/index"
   ],
-  "window":{
+  "window": {
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "TODO",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "selectedColor": "#2ec613",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "Today",
+      "iconPath": "icons/select-0.png",
+      "selectedIconPath": "icons/select-1.png"
+    }, {
+      "pagePath": "pages/log/index",
+      "text": "Log",
+      "iconPath": "icons/list-0.png",
+      "selectedIconPath": "icons/list-1.png"
+    }]
   }
 }
