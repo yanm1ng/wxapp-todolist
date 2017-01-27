@@ -1,28 +1,64 @@
 //index.js
-var app = getApp()
+import {
+  formatTime,
+  formatDate
+} from '../../utils/util';
+
+var app = getApp();
+var TODAY = formatDate(new Date());
+
 Page({
   data: {
-    todos: [
-      { index: 0, value:'first todo', time: '下午3:27:44', completed: false },
-    ],
+    todos: [],
     allCompleted: true,
     input: '',
     userInfo: {}
   },
 
   save: function() {
-    wx.setStorageSync('todo_list', this.data.todos)
+    var todos_history = wx.getStorageSync('todos_history');
+    var j = 0;
+
+    if (typeof todos_history != 'object') {
+      todos_history = [];
+    }
+
+    for (var i = 0; i < todos_history.length; i++) {
+      if (todos_history[i].date == TODAY) {
+        todos_history[i].todos = this.data.todos;
+      } else {
+        j++;
+      }
+    }
+
+    if(j == todos_history.length) {
+      todos_history.push({
+        date: TODAY,
+        todos: this.data.todos
+      })
+    }
+
+    wx.setStorageSync('todos_history', todos_history);
   },
 
   onLoad: function () {
     var that = this;
-    var todos = wx.getStorageSync('todo_list');
+    var todos_history = wx.getStorageSync('todos_history');
+    var todos = [];
+
+    for (var i = 0; i < todos_history.length; i++) {
+      if (todos_history[i].date == TODAY) {
+        todos = todos_history[i].todos;
+      }
+    }
+
     if (todos) {
       app.getUserInfo(function(userInfo) {
         that.setData({
           userInfo,
           todos
         })
+        that.save();
       })
     }
   },
@@ -43,7 +79,7 @@ Page({
       return 0;
     }
     var date = new Date();
-    var time = date.toLocaleTimeString();
+    var time = formatTime(date);
     todos.push({
       index: length + 1,
       value: input,
