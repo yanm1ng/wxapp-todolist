@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/log/index"
+    "pages/record/index"
   ],
   "window": {
     "backgroundTextStyle":"light",
@@ -18,8 +18,8 @@
       "iconPath": "icons/select-0.png",
       "selectedIconPath": "icons/select-1.png"
     }, {
-      "pagePath": "pages/log/index",
-      "text": "Log",
+      "pagePath": "pages/record/index",
+      "text": "Record",
       "iconPath": "icons/list-0.png",
       "selectedIconPath": "icons/list-1.png"
     }]
