@@ -1,0 +1,20 @@
+<view class="container">
+	<view class="weui-cells__title">Todos Record</view>
+	<block wx:if="{{history.length}}">
+		<view class="weui-cells weui-cells_after-title">
+			<view class="weui-cell">
+				<view class="weui-cell__bd">日期</view>
+				<view class="weui-cell__ft">完成率</view>
+			</view>
+			<view class="weui-cell" wx:for="{{history}}" wx:key="{{item.index}}">
+				<view class="weui-cell__bd">{{item.date}}</view>
+				<view class="weui-cell__ft">{{item.rage}}</view>
+			</view>
+		</view>
+	</block>
+	<block wx:else>
+			<view class="weui-cell">
+				<view class="weui-cell__bd">No Record!</view>
+			</view>
+		</block>
+</view>
