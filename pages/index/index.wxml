@@ -2,7 +2,7 @@
   <view class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
 		<view class="section">
-			<input placeholder="今天想做啥？" value="{{input}}" bindinput="handleInput"/>
+			<input placeholder="Input today's todos..." value="{{input}}" bindinput="handleInput"/>
 		</view>
 		<view class="btn">
 			<button bindtap="todoAdd" class="weui-btn mini-btn" type="primary" size="mini">添加Todo</button>
