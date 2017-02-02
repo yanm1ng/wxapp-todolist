@@ -13,8 +13,8 @@
 		</view>
 	</block>
 	<block wx:else>
-			<view class="weui-cell">
-				<view class="weui-cell__bd">No Record!</view>
-			</view>
-		</block>
+		<view class="weui-cell">
+			<view class="weui-cell__bd">No Record!</view>
+		</view>
+	</block>
 </view>
