@@ -10,7 +10,6 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "borderStyle": "white",
     "selectedColor": "#2ec613",
     "list": [{
       "pagePath": "pages/index/index",
